@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>House Party Loyalty</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="row">
+            <div>
+                <img src="imagenes/LOGOTGIF.jpg" alt="logo" class="col-3">
+            </div>
+            <div class="col-1">
+                <a href="info@tgif.com">info@tgif.com</a>
+            </div>
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light col-12 border border-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Congress 113
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="house.html">House</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="senate.html">Senate</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Attendance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="house_attendance.html">House</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="senate_attendance.html">Senate</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Party Loyalty
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="house_partyLoyalty.html">House</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="senate_partyLoyalty.html">Senate</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row m-3 align-items-center">
+            <div class="col text-justify">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.</p>
+            </div>
+            <div class="col">
+                <h2>House at a glance</h2>
+                <table class="table">
+                    <thead>
+                        <th>Party</th>
+                        <th>No. of Reps</th>
+                        <th>% Voted w/ Party</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Democrats</td>
+                            <td>{{statistic.democrats.length}}</td>
+                            <td>{{statistic.democratsVotesWithParty}}</td>
+                        </tr>
+                        <tr>
+                            <td>Republicans</td>
+                            <td>{{statistic.republicans.length}}</td>
+                            <td>{{statistic.republicansVotesWithParty}}</td>
+                        </tr>
+                        <tr>
+                            <td>Independents</td>
+                            <td>{{statistic.independents.length}}</td>
+                            <td>{{statistic.independentsVotesWithParty}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Least Loyal</h2>
+                <h4>(Bottom 10% of Party)</h4>
+                <table class="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>No. Party Votes</th>
+                        <th>% Party Votes</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="least in statistic.leastLoyal">
+                            <td>{{least.first_name}} {{least.middle_name}} {{least.last_name}}</td>
+                            <td>{{least.total_votes}}</td>
+                            <td>{{least.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h2>Most Loyal</h2>
+                <h4>(Top 10% of Party)</h4>
+                <table class="table ">
+                    <thead>
+                        <th>Name</th>
+                        <th>No. Party Votes</th>
+                        <th>% Party Votes</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="most in statistic.mostLoyal">
+                            <td>{{most.first_name}} {{most.middle_name}} {{most.last_name}}</td>
+                            <td>{{most.total_votes}}</td>
+                            <td>{{most.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="p-1 mb-2 bg-light text-dark border border-dark">
+                    <p class="row justify-content-center">2016 TGIF | All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--<script src="js/congress113-house.js"></script>-->
+    <script src="js/statistics.js"></script>
+    <script src="js/main_loyal.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
